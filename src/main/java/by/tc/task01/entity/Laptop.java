@@ -84,4 +84,16 @@ public class Laptop extends Appliance{
         result = 31 * result + display_inchs;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "battery_capacity=" + battery_capacity +
+                ", os=" + os +
+                ", memory_rom=" + memory_rom +
+                ", system_memory=" + system_memory +
+                ", cpu=" + cpu +
+                ", display_inchs=" + display_inchs +
+                '}';
+    }
 }

@@ -1,14 +1,11 @@
 package by.tc.task01.entity;
 
 public class VacuumCleaner extends Appliance{
-    public enum WandType {ALL_IN_ONE}
-    public enum BagType {A2, AA89, XX00};
-    public enum FilterType {A, B, C};
 
     private int power_consumption;
-    private FilterType filter_type;
-    private BagType bag_type;
-    private WandType wand_type;
+    private char filter_type;
+    private String bag_type;
+    private String wand_type;
     private int motor_speed_regulation;
     private int cleaning_width;
 
@@ -22,27 +19,27 @@ public class VacuumCleaner extends Appliance{
         this.power_consumption = power_consumption;
     }
 
-    public FilterType getFilter_type() {
+    public char getFilter_type() {
         return filter_type;
     }
 
-    public void setFilter_type(FilterType filter_type) {
+    public void setFilter_type(char filter_type) {
         this.filter_type = filter_type;
     }
 
-    public BagType getBag_type() {
+    public String getBag_type() {
         return bag_type;
     }
 
-    public void setBag_type(BagType bag_type) {
+    public void setBag_type(String bag_type) {
         this.bag_type = bag_type;
     }
 
-    public WandType getWand_type() {
+    public String getWand_type() {
         return wand_type;
     }
 
-    public void setWand_type(WandType wand_type) {
+    public void setWand_type(String wand_type) {
         this.wand_type = wand_type;
     }
 
@@ -73,18 +70,30 @@ public class VacuumCleaner extends Appliance{
         if (filter_type != that.filter_type) return false;
         if (motor_speed_regulation != that.motor_speed_regulation) return false;
         if (cleaning_width != that.cleaning_width) return false;
-        if (bag_type != that.bag_type) return false;
-        return wand_type == that.wand_type;
+        if (bag_type != null ? !bag_type.equals(that.bag_type) : that.bag_type != null) return false;
+        return wand_type != null ? wand_type.equals(that.wand_type) : that.wand_type == null;
     }
 
     @Override
     public int hashCode() {
         int result = power_consumption;
-        result = 31 * result + (filter_type != null ? filter_type.hashCode() : 0);
+        result = 31 * result + (int) filter_type;
         result = 31 * result + (bag_type != null ? bag_type.hashCode() : 0);
         result = 31 * result + (wand_type != null ? wand_type.hashCode() : 0);
         result = 31 * result + motor_speed_regulation;
         result = 31 * result + cleaning_width;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "VacuumCleaner{" +
+                "power_consumption=" + power_consumption +
+                ", filter_type=" + filter_type +
+                ", bag_type='" + bag_type + '\'' +
+                ", wand_type='" + wand_type + '\'' +
+                ", motor_speed_regulation=" + motor_speed_regulation +
+                ", cleaning_width=" + cleaning_width +
+                '}';
     }
 }

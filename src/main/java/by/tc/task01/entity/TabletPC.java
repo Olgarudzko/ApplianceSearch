@@ -2,13 +2,11 @@ package by.tc.task01.entity;
 
 public class TabletPC extends Appliance{
 
-    public enum Color{RED, GREEN, BLUE}
-
     private short battery_capacity;
     private int display_inches;
     private int memory_rom;
     private short flash_memory_capacity;
-    private Color color;
+    private String color;
 
     public TabletPC() { }
 
@@ -44,11 +42,11 @@ public class TabletPC extends Appliance{
         this.flash_memory_capacity = flash_memory_capacity;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -63,16 +61,27 @@ public class TabletPC extends Appliance{
         if (display_inches != tabletPC.display_inches) return false;
         if (memory_rom != tabletPC.memory_rom) return false;
         if (flash_memory_capacity != tabletPC.flash_memory_capacity) return false;
-        return color == tabletPC.color;
+        return color != null ? color.equals(tabletPC.color) : tabletPC.color == null;
     }
 
     @Override
     public int hashCode() {
-        int result = battery_capacity;
+        int result = (int) battery_capacity;
         result = 31 * result + display_inches;
         result = 31 * result + memory_rom;
-        result = 31 * result + flash_memory_capacity;
+        result = 31 * result + (int) flash_memory_capacity;
         result = 31 * result + (color != null ? color.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "TabletPC{" +
+                "battery_capacity=" + battery_capacity +
+                ", display_inches=" + display_inches +
+                ", memory_rom=" + memory_rom +
+                ", flash_memory_capacity=" + flash_memory_capacity +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

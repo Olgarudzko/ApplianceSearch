@@ -88,4 +88,16 @@ public class Oven extends Appliance{
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Oven{" +
+                "power_consumption=" + power_consumption +
+                ", weight=" + weight +
+                ", capacity=" + capacity +
+                ", depth=" + depth +
+                ", height=" + height +
+                ", width=" + width +
+                '}';
+    }
 }

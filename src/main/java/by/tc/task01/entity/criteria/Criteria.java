@@ -10,7 +10,10 @@ public class Criteria<E> {
 	public void add(E searchCriteria, Object value) {
 		criteria.put(searchCriteria, value);
 	}
-	
+
+	public Map<E, Object> getCriteria() {
+		return criteria;
+	}
 	// you may add your own code here
 
 }

@@ -84,4 +84,16 @@ public class Refrigerator extends Appliance{
         result = 31 * result + width;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Refrigerator{" +
+                "power_consumption=" + power_consumption +
+                ", weight=" + weight +
+                ", freezer_capacity=" + freezer_capacity +
+                ", overall_capacity=" + overall_capacity +
+                ", height=" + height +
+                ", width=" + width +
+                '}';
+    }
 }
