@@ -35,13 +35,13 @@ public class Main {
 		PrintApplianceInfo.print(appliance);
 
 		//////////////////////////////////////////////////////////////////
-		
+
 		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
 		criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
 		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
 		criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
 
-		appliance = service.find(criteriaOven);
+		appliance = service.find(criteriaTabletPC);
 
 		PrintApplianceInfo.print(appliance);
 

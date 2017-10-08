@@ -5,7 +5,11 @@ import by.tc.task01.entity.Appliance;
 public class PrintApplianceInfo {
 	
 	public static void print(Appliance appliance) {
-		System.out.println(appliance.toString());
+		if (appliance!=null){
+			System.out.println(appliance.toString());
+		} else {
+			System.out.println("Unfortunately we have no matching appliance.");
+		}
 	}
 	
 	// you may add your own code here

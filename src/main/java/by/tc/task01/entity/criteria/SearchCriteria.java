@@ -1,7 +1,9 @@
 package by.tc.task01.entity.criteria;
 
+import java.util.ArrayList;
+
 public final class SearchCriteria {
-	
+
 	public static enum Oven{
 		POWER_CONSUMPTION, WEIGHT, CAPACITY, DEPTH, HEIGHT, WIDTH
 	}
@@ -19,7 +21,7 @@ public final class SearchCriteria {
 	}
 	
 	public static enum TabletPC{
-		BATTERY_CAPACITY, DISPLAY_INCHES, MEMORY_ROM, FLASH_MEMORY_CAPACITY, COLOR		
+		BATTERY_CAPACITY, DISPLAY_INCHES, MEMORY_ROM, FLASH_MEMORY_CAPACITY, COLOR
 	}
 	
 	public static enum Speakers{

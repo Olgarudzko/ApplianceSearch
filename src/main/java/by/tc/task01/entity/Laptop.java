@@ -3,7 +3,7 @@ package by.tc.task01.entity;
 public class Laptop extends Appliance{
 
     private float battery_capacity;
-    private int os;
+    private String os;
     private int memory_rom;
     private int system_memory;
     private float cpu;
@@ -19,11 +19,11 @@ public class Laptop extends Appliance{
         this.battery_capacity = battery_capacity;
     }
 
-    public int getOs() {
+    public String getOs() {
         return os;
     }
 
-    public void setOs(int os) {
+    public void setOs(String os) {
         this.os = os;
     }
 
@@ -66,18 +66,18 @@ public class Laptop extends Appliance{
 
         Laptop laptop = (Laptop) o;
 
-        if (battery_capacity != laptop.battery_capacity) return false;
-        if (os != laptop.os) return false;
+        if (Float.compare(laptop.battery_capacity, battery_capacity) != 0) return false;
         if (memory_rom != laptop.memory_rom) return false;
         if (system_memory != laptop.system_memory) return false;
-        if (cpu != laptop.cpu) return false;
-        return display_inchs == laptop.display_inchs;
+        if (Float.compare(laptop.cpu, cpu) != 0) return false;
+        if (display_inchs != laptop.display_inchs) return false;
+        return os != null ? os.equals(laptop.os) : laptop.os == null;
     }
 
     @Override
     public int hashCode() {
         int result = (battery_capacity != +0.0f ? Float.floatToIntBits(battery_capacity) : 0);
-        result = 31 * result + os;
+        result = 31 * result + (os != null ? os.hashCode() : 0);
         result = 31 * result + memory_rom;
         result = 31 * result + system_memory;
         result = 31 * result + (cpu != +0.0f ? Float.floatToIntBits(cpu) : 0);
@@ -89,7 +89,7 @@ public class Laptop extends Appliance{
     public String toString() {
         return "Laptop{" +
                 "battery_capacity=" + battery_capacity +
-                ", os=" + os +
+                ", os='" + os +'\''+
                 ", memory_rom=" + memory_rom +
                 ", system_memory=" + system_memory +
                 ", cpu=" + cpu +

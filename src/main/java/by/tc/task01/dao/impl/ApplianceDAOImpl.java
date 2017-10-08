@@ -7,7 +7,9 @@ import by.tc.task01.entity.criteria.Criteria;
 public class ApplianceDAOImpl implements ApplianceDAO{
 
 	public <E> Appliance find(Criteria<E> criteria) {
-		// you may add your own code here
+
+
+
 		return null;
 	}
 	

@@ -3,7 +3,7 @@ package by.tc.task01.entity;
 public class VacuumCleaner extends Appliance{
 
     private int power_consumption;
-    private char filter_type;
+    private String filter_type;
     private String bag_type;
     private String wand_type;
     private int motor_speed_regulation;
@@ -19,11 +19,11 @@ public class VacuumCleaner extends Appliance{
         this.power_consumption = power_consumption;
     }
 
-    public char getFilter_type() {
+    public String getFilter_type() {
         return filter_type;
     }
 
-    public void setFilter_type(char filter_type) {
+    public void setFilter_type(String filter_type) {
         this.filter_type = filter_type;
     }
 
@@ -67,9 +67,9 @@ public class VacuumCleaner extends Appliance{
         VacuumCleaner that = (VacuumCleaner) o;
 
         if (power_consumption != that.power_consumption) return false;
-        if (filter_type != that.filter_type) return false;
         if (motor_speed_regulation != that.motor_speed_regulation) return false;
         if (cleaning_width != that.cleaning_width) return false;
+        if (filter_type != null ? !filter_type.equals(that.filter_type) : that.filter_type != null) return false;
         if (bag_type != null ? !bag_type.equals(that.bag_type) : that.bag_type != null) return false;
         return wand_type != null ? wand_type.equals(that.wand_type) : that.wand_type == null;
     }
@@ -77,7 +77,7 @@ public class VacuumCleaner extends Appliance{
     @Override
     public int hashCode() {
         int result = power_consumption;
-        result = 31 * result + (int) filter_type;
+        result = 31 * result + (filter_type != null ? filter_type.hashCode() : 0);
         result = 31 * result + (bag_type != null ? bag_type.hashCode() : 0);
         result = 31 * result + (wand_type != null ? wand_type.hashCode() : 0);
         result = 31 * result + motor_speed_regulation;
@@ -89,7 +89,7 @@ public class VacuumCleaner extends Appliance{
     public String toString() {
         return "VacuumCleaner{" +
                 "power_consumption=" + power_consumption +
-                ", filter_type=" + filter_type +
+                ", filter_type='" + filter_type +'\'' +
                 ", bag_type='" + bag_type + '\'' +
                 ", wand_type='" + wand_type + '\'' +
                 ", motor_speed_regulation=" + motor_speed_regulation +
