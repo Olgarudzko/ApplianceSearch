@@ -51,6 +51,14 @@ public class Main {
 		appliance = service.find(criteriaLaptop);
 		PrintApplianceInfo.print(appliance);
 
+		Criteria<VacuumCleaner> criteriaVacuumCleaner = new Criteria<VacuumCleaner>();
+		criteriaVacuumCleaner.add(VacuumCleaner.WAND_TYPE, "all-in-one");
+		criteriaVacuumCleaner.add(VacuumCleaner.BAG_TYPE, "AA-89");
+		criteriaVacuumCleaner.add(VacuumCleaner.FILTER_TYPE, "B");
+		criteriaVacuumCleaner.add(VacuumCleaner.POWER_CONSUMPTION, 110);
+		appliance = service.find(criteriaVacuumCleaner);
+		PrintApplianceInfo.print(appliance);
+
 	}
 
 }

@@ -20,21 +20,21 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                 E searchCriteria = firstParameter.getKey();
                 Object value = firstParameter.getValue();
 
-                String[] parsedApplianceDescription;
+                String[] parsedDescription;
 
                 if (searchCriteria instanceof SearchCriteria.Laptop) {
                     for (String catalogueLine : catalogue) {
-                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Laptop");
-                        if (parsedApplianceDescription != null) {
-                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
-                                String[] laptopParam = parsedApplianceDescription[i].split("=");
+                        parsedDescription = findApplianceWithMatchingName(catalogueLine, "Laptop");
+                        if (parsedDescription != null) {
+                            for (int i = 1; i < parsedDescription.length; i++) {
+                                String[] laptopParam = parsedDescription[i].split("=");
                                 if (isLaptopParameterMatching(searchCriteria, laptopParam, value)) {
                                     while (criteriaIterator.hasNext()) {
                                         Map.Entry<E, Object> nextParameter = criteriaIterator.next();
                                         E nextSearchCriteria = nextParameter.getKey();
                                         Object nextValue = nextParameter.getValue();
-                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
-                                            String[] params = parsedApplianceDescription[j].split("=");
+                                        for (int j = 1; j < parsedDescription.length; j++) {
+                                            String[] params = parsedDescription[j].split("=");
                                             if (nextSearchCriteria == SearchCriteria.Laptop.valueOf(params[0])) {
                                                 if (!isLaptopParameterMatching(nextSearchCriteria, params, nextValue)) {
                                                     return null;
@@ -42,7 +42,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                                             }
                                         }
                                     }
-                                    return extractLaptopFomCatalogue(parsedApplianceDescription);
+                                    return extractLaptopFomCatalogue(parsedDescription);
                                 }
                             }
                         }
@@ -51,18 +51,18 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
                 } else if (searchCriteria instanceof SearchCriteria.Oven) {
                     for (String catalogueLine : catalogue) {
-                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Oven");
-                        if (parsedApplianceDescription != null) {
-                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
-                                String[] applianceParams = parsedApplianceDescription[i].split("=");
+                        parsedDescription = findApplianceWithMatchingName(catalogueLine, "Oven");
+                        if (parsedDescription != null) {
+                            for (int i = 1; i < parsedDescription.length; i++) {
+                                String[] applianceParams = parsedDescription[i].split("=");
                                 if (searchCriteria == SearchCriteria.Oven.valueOf(applianceParams[0]) &&
                                         checkNumberValue(applianceParams[1], value)) {
                                     while (criteriaIterator.hasNext()) {
                                         Map.Entry<E, Object> nextParameter = criteriaIterator.next();
                                         E nextSearchCriteria = nextParameter.getKey();
                                         Object nextValue = nextParameter.getValue();
-                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
-                                            String[] params = parsedApplianceDescription[j].split("=");
+                                        for (int j = 1; j < parsedDescription.length; j++) {
+                                            String[] params = parsedDescription[j].split("=");
                                             if (nextSearchCriteria == SearchCriteria.Oven.valueOf(params[0])) {
                                                 if (!checkNumberValue(params[1], nextValue)) {
                                                     return null;
@@ -70,7 +70,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                                             }
                                         }
                                     }
-                                    return extractOvenFomCatalogue(parsedApplianceDescription);
+                                    return extractOvenFomCatalogue(parsedDescription);
                                 }
                             }
                         }
@@ -79,18 +79,18 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
                 } else if (searchCriteria instanceof SearchCriteria.Refrigerator) {
                     for (String catalogueLine : catalogue) {
-                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Refrigerator");
-                        if (parsedApplianceDescription != null) {
-                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
-                                String[] applianceParams = parsedApplianceDescription[i].split("=");
+                        parsedDescription = findApplianceWithMatchingName(catalogueLine, "Refrigerator");
+                        if (parsedDescription != null) {
+                            for (int i = 1; i < parsedDescription.length; i++) {
+                                String[] applianceParams = parsedDescription[i].split("=");
                                 if (searchCriteria == SearchCriteria.Refrigerator.valueOf(applianceParams[0]) &&
                                         checkNumberValue(applianceParams[1], value)) {
                                     while (criteriaIterator.hasNext()) {
                                         Map.Entry<E, Object> nextParameter = criteriaIterator.next();
                                         E nextSearchCriteria = nextParameter.getKey();
                                         Object nextValue = nextParameter.getValue();
-                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
-                                            String[] params = parsedApplianceDescription[j].split("=");
+                                        for (int j = 1; j < parsedDescription.length; j++) {
+                                            String[] params = parsedDescription[j].split("=");
                                             if (nextSearchCriteria == SearchCriteria.Refrigerator.valueOf(params[0])) {
                                                 if (!checkNumberValue(params[1], nextValue)) {
                                                     return null;
@@ -98,7 +98,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                                             }
                                         }
                                     }
-                                    return extractRefrigeratorFomCatalogue(parsedApplianceDescription);
+                                    return extractRefrigeratorFomCatalogue(parsedDescription);
                                 }
                             }
                         }
@@ -107,17 +107,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
                 } else if (searchCriteria instanceof SearchCriteria.TabletPC) {
                     for (String catalogueLine : catalogue) {
-                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "TabletPC");
-                        if (parsedApplianceDescription != null) {
-                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
-                                String[] applianceParams = parsedApplianceDescription[i].split("=");
+                        parsedDescription = findApplianceWithMatchingName(catalogueLine, "TabletPC");
+                        if (parsedDescription != null) {
+                            for (int i = 1; i < parsedDescription.length; i++) {
+                                String[] applianceParams = parsedDescription[i].split("=");
                                 if (isTabletPCParameterMatching(searchCriteria, applianceParams, value)) {
                                     while (criteriaIterator.hasNext()) {
                                         Map.Entry<E, Object> nextParameter = criteriaIterator.next();
                                         E nextSearchCriteria = nextParameter.getKey();
                                         Object nextValue = nextParameter.getValue();
-                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
-                                            String[] params = parsedApplianceDescription[j].split("=");
+                                        for (int j = 1; j < parsedDescription.length; j++) {
+                                            String[] params = parsedDescription[j].split("=");
                                             if (nextSearchCriteria == SearchCriteria.TabletPC.valueOf(params[0])) {
                                                 if (!isTabletPCParameterMatching(nextSearchCriteria, params, nextValue)) {
                                                     return null;
@@ -125,7 +125,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                                             }
                                         }
                                     }
-                                    return extractLaptopFomCatalogue(parsedApplianceDescription);
+                                    return extractTabletPCFomCatalogue(parsedDescription);
                                 }
                             }
                         }
@@ -134,17 +134,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
                 } else if (searchCriteria instanceof SearchCriteria.Speakers) {
                     for (String catalogueLine : catalogue) {
-                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Speakers");
-                        if (parsedApplianceDescription != null) {
-                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
-                                String[] applianceParams = parsedApplianceDescription[i].split("=");
+                        parsedDescription = findApplianceWithMatchingName(catalogueLine, "Speakers");
+                        if (parsedDescription != null) {
+                            for (int i = 1; i < parsedDescription.length; i++) {
+                                String[] applianceParams = parsedDescription[i].split("=");
                                 if (isSpeakersParameterMatching(searchCriteria, applianceParams, value)) {
                                     while (criteriaIterator.hasNext()) {
                                         Map.Entry<E, Object> nextParameter = criteriaIterator.next();
                                         E nextSearchCriteria = nextParameter.getKey();
                                         Object nextValue = nextParameter.getValue();
-                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
-                                            String[] params = parsedApplianceDescription[j].split("=");
+                                        for (int j = 1; j < parsedDescription.length; j++) {
+                                            String[] params = parsedDescription[j].split("=");
                                             if (nextSearchCriteria == SearchCriteria.Speakers.valueOf(params[0])) {
                                                 if (!isSpeakersParameterMatching(nextSearchCriteria, params, nextValue)) {
                                                     return null;
@@ -152,7 +152,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                                             }
                                         }
                                     }
-                                    return extractSpeakersFomCatalogue(parsedApplianceDescription);
+                                    return extractSpeakersFomCatalogue(parsedDescription);
                                 }
                             }
                         }
@@ -161,17 +161,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
                 } else if (searchCriteria instanceof SearchCriteria.VacuumCleaner) {
                     for (String catalogueLine : catalogue) {
-                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "VacuumCleaner");
-                        if (parsedApplianceDescription != null) {
-                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
-                                String[] applianceParams = parsedApplianceDescription[i].split("=");
+                        parsedDescription = findApplianceWithMatchingName(catalogueLine, "VacuumCleaner");
+                        if (parsedDescription != null) {
+                            for (int i = 1; i < parsedDescription.length; i++) {
+                                String[] applianceParams = parsedDescription[i].split("=");
                                 if (isVacuumCleanerParameterMatching(searchCriteria, applianceParams, value)) {
                                     while (criteriaIterator.hasNext()) {
                                         Map.Entry<E, Object> nextParameter = criteriaIterator.next();
                                         E nextSearchCriteria = nextParameter.getKey();
                                         Object nextValue = nextParameter.getValue();
-                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
-                                            String[] params = parsedApplianceDescription[j].split("=");
+                                        for (int j = 1; j < parsedDescription.length; j++) {
+                                            String[] params = parsedDescription[j].split("=");
                                             if (nextSearchCriteria == SearchCriteria.VacuumCleaner.valueOf(params[0])) {
                                                 if (!isVacuumCleanerParameterMatching(nextSearchCriteria, params, nextValue)) {
                                                     return null;
@@ -179,7 +179,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                                             }
                                         }
                                     }
-                                    return extractSpeakersFomCatalogue(parsedApplianceDescription);
+                                    return extractVacuumCleanerFomCatalogue(parsedDescription);
                                 }
                             }
                         }
@@ -190,7 +190,6 @@ public class ApplianceDAOImpl implements ApplianceDAO {
         }
         return null;
     }
-
 
     private String[] findApplianceWithMatchingName(String catalogueLine, String applianceType) {
         if (catalogueLine.contains(applianceType) || catalogueLine.contains(applianceType.toUpperCase()) ||
@@ -298,6 +297,50 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             }
         }
         return speakers;
+    }
+
+    private TabletPC extractTabletPCFomCatalogue(String[] tabletPCDescription) {
+        TabletPC tabletPC = new TabletPC();
+        for (int j = 1; j < tabletPCDescription.length; j++) {
+            String[] parsedDescription = tabletPCDescription[j].trim().split("=");
+            String parameter = parsedDescription[0];
+            String value = parsedDescription[1];
+            if (parameter.equalsIgnoreCase("BATTERY_CAPACITY")) {
+                tabletPC.setBattery_capacity(Short.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("DISPLAY_INCHES")) {
+                tabletPC.setDisplay_inches(Integer.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("MEMORY_ROM")) {
+                tabletPC.setMemory_rom(Integer.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("FLASH_MEMORY_CAPACITY")) {
+                tabletPC.setFlash_memory_capacity(Short.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("COLOR")) {
+                tabletPC.setColor(value);
+            }
+        }
+        return tabletPC;
+    }
+
+    private Appliance extractVacuumCleanerFomCatalogue(String[] vacuumCleanerDescription) {
+        VacuumCleaner vacuumCleaner = new VacuumCleaner();
+        for (int j = 1; j < vacuumCleanerDescription.length; j++) {
+            String[] parsedDescription = vacuumCleanerDescription[j].trim().split("=");
+            String parameter = parsedDescription[0];
+            String value = parsedDescription[1];
+            if (parameter.equalsIgnoreCase("POWER_CONSUMPTION")) {
+                vacuumCleaner.setPower_consumption(Integer.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("MOTOR_SPEED_REGULATION")) {
+                vacuumCleaner.setMotor_speed_regulation(Integer.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("CLEANING_WIDTH")) {
+                vacuumCleaner.setCleaning_width(Integer.valueOf(value));
+            } else if (parameter.equalsIgnoreCase("FILTER_TYPE")) {
+                vacuumCleaner.setFilter_type(value);
+            } else if (parameter.equalsIgnoreCase("BAG_TYPE")) {
+                vacuumCleaner.setBag_type(value);
+            } else if (parameter.equalsIgnoreCase("WAND_TYPE")) {
+                vacuumCleaner.setWand_type(value);
+            }
+        }
+        return vacuumCleaner;
     }
 
     private <E> boolean isLaptopParameterMatching(E searchCriteria, String[] laptopParam, Object desiredValue) {
