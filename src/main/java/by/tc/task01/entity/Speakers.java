@@ -2,28 +2,28 @@ package by.tc.task01.entity;
 
 public class Speakers extends Appliance {
 
-    private int power_consumption;
-    private short number_of_speakers;
+    private double powerConsumption;
+    private double numberOfSpeakers;
     private String frequency;
-    private short cord_lenght;
+    private double cordLenght;
 
     public Speakers() {
     }
 
-    public int getPower_consumption() {
-        return power_consumption;
+    public double getPowerConsumption() {
+        return powerConsumption;
     }
 
-    public void setPower_consumption(int power_consumption) {
-        this.power_consumption = power_consumption;
+    public void setPowerConsumption(double powerConsumption) {
+        this.powerConsumption = powerConsumption;
     }
 
-    public short getNumber_of_speakers() {
-        return number_of_speakers;
+    public double getNumberOfSpeakers() {
+        return numberOfSpeakers;
     }
 
-    public void setNumber_of_speakers(short number_of_speakers) {
-        this.number_of_speakers = number_of_speakers;
+    public void setNumberOfSpeakers(double numberOfSpeakers) {
+        this.numberOfSpeakers = numberOfSpeakers;
     }
 
     public String getFrequency() {
@@ -34,12 +34,12 @@ public class Speakers extends Appliance {
         this.frequency = frequency;
     }
 
-    public short getCord_lenght() {
-        return cord_lenght;
+    public double getCordLenght() {
+        return cordLenght;
     }
 
-    public void setCord_lenght(short cord_lenght) {
-        this.cord_lenght = cord_lenght;
+    public void setCordLenght(double cordLenght) {
+        this.cordLenght = cordLenght;
     }
 
     @Override
@@ -49,28 +49,33 @@ public class Speakers extends Appliance {
 
         Speakers speakers = (Speakers) o;
 
-        if (power_consumption != speakers.power_consumption) return false;
-        if (number_of_speakers != speakers.number_of_speakers) return false;
-        if (cord_lenght != speakers.cord_lenght) return false;
+        if (Double.compare(speakers.powerConsumption, powerConsumption) != 0) return false;
+        if (Double.compare(speakers.numberOfSpeakers, numberOfSpeakers) != 0) return false;
+        if (Double.compare(speakers.cordLenght, cordLenght) != 0) return false;
         return frequency != null ? frequency.equals(speakers.frequency) : speakers.frequency == null;
     }
 
     @Override
     public int hashCode() {
-        int result = power_consumption;
-        result = 31 * result + (int) number_of_speakers;
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(powerConsumption);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(numberOfSpeakers);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (frequency != null ? frequency.hashCode() : 0);
-        result = 31 * result + (int) cord_lenght;
+        temp = Double.doubleToLongBits(cordLenght);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
         return "Speakers{" +
-                "power_consumption=" + power_consumption +
-                ", number_of_speakers=" + number_of_speakers +
+                "powerConsumption=" + powerConsumption +
+                ", numberOfSpeakers=" + numberOfSpeakers +
                 ", frequency='" + frequency + '\'' +
-                ", cord_lenght=" + cord_lenght +
+                ", cordLenght=" + cordLenght +
                 '}';
     }
 }

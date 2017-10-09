@@ -2,61 +2,61 @@ package by.tc.task01.entity;
 
 public class VacuumCleaner extends Appliance{
 
-    private int power_consumption;
-    private String filter_type;
-    private String bag_type;
-    private String wand_type;
-    private int motor_speed_regulation;
-    private int cleaning_width;
+    private double powerConsumption;
+    private String filterType;
+    private String bagType;
+    private String wandType;
+    private double motorSpeedRegulation;
+    private double cleaningWidth;
 
     public VacuumCleaner() { }
 
-    public int getPower_consumption() {
-        return power_consumption;
+    public double getPowerConsumption() {
+        return powerConsumption;
     }
 
-    public void setPower_consumption(int power_consumption) {
-        this.power_consumption = power_consumption;
+    public void setPowerConsumption(double powerConsumption) {
+        this.powerConsumption = powerConsumption;
     }
 
-    public String getFilter_type() {
-        return filter_type;
+    public String getFilterType() {
+        return filterType;
     }
 
-    public void setFilter_type(String filter_type) {
-        this.filter_type = filter_type;
+    public void setFilterType(String filterType) {
+        this.filterType = filterType;
     }
 
-    public String getBag_type() {
-        return bag_type;
+    public String getBagType() {
+        return bagType;
     }
 
-    public void setBag_type(String bag_type) {
-        this.bag_type = bag_type;
+    public void setBagType(String bagType) {
+        this.bagType = bagType;
     }
 
-    public String getWand_type() {
-        return wand_type;
+    public String getWandType() {
+        return wandType;
     }
 
-    public void setWand_type(String wand_type) {
-        this.wand_type = wand_type;
+    public void setWandType(String wandType) {
+        this.wandType = wandType;
     }
 
-    public int getMotor_speed_regulation() {
-        return motor_speed_regulation;
+    public double getMotorSpeedRegulation() {
+        return motorSpeedRegulation;
     }
 
-    public void setMotor_speed_regulation(int motor_speed_regulation) {
-        this.motor_speed_regulation = motor_speed_regulation;
+    public void setMotorSpeedRegulation(double motorSpeedRegulation) {
+        this.motorSpeedRegulation = motorSpeedRegulation;
     }
 
-    public int getCleaning_width() {
-        return cleaning_width;
+    public double getCleaningWidth() {
+        return cleaningWidth;
     }
 
-    public void setCleaning_width(int cleaning_width) {
-        this.cleaning_width = cleaning_width;
+    public void setCleaningWidth(double cleaningWidth) {
+        this.cleaningWidth = cleaningWidth;
     }
 
     @Override
@@ -66,34 +66,39 @@ public class VacuumCleaner extends Appliance{
 
         VacuumCleaner that = (VacuumCleaner) o;
 
-        if (power_consumption != that.power_consumption) return false;
-        if (motor_speed_regulation != that.motor_speed_regulation) return false;
-        if (cleaning_width != that.cleaning_width) return false;
-        if (filter_type != null ? !filter_type.equals(that.filter_type) : that.filter_type != null) return false;
-        if (bag_type != null ? !bag_type.equals(that.bag_type) : that.bag_type != null) return false;
-        return wand_type != null ? wand_type.equals(that.wand_type) : that.wand_type == null;
+        if (Double.compare(that.powerConsumption, powerConsumption) != 0) return false;
+        if (Double.compare(that.motorSpeedRegulation, motorSpeedRegulation) != 0) return false;
+        if (Double.compare(that.cleaningWidth, cleaningWidth) != 0) return false;
+        if (filterType != null ? !filterType.equals(that.filterType) : that.filterType != null) return false;
+        if (bagType != null ? !bagType.equals(that.bagType) : that.bagType != null) return false;
+        return wandType != null ? wandType.equals(that.wandType) : that.wandType == null;
     }
 
     @Override
     public int hashCode() {
-        int result = power_consumption;
-        result = 31 * result + (filter_type != null ? filter_type.hashCode() : 0);
-        result = 31 * result + (bag_type != null ? bag_type.hashCode() : 0);
-        result = 31 * result + (wand_type != null ? wand_type.hashCode() : 0);
-        result = 31 * result + motor_speed_regulation;
-        result = 31 * result + cleaning_width;
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(powerConsumption);
+        result = (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (filterType != null ? filterType.hashCode() : 0);
+        result = 31 * result + (bagType != null ? bagType.hashCode() : 0);
+        result = 31 * result + (wandType != null ? wandType.hashCode() : 0);
+        temp = Double.doubleToLongBits(motorSpeedRegulation);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(cleaningWidth);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
         return "VacuumCleaner{" +
-                "power_consumption=" + power_consumption +
-                ", filter_type='" + filter_type +'\'' +
-                ", bag_type='" + bag_type + '\'' +
-                ", wand_type='" + wand_type + '\'' +
-                ", motor_speed_regulation=" + motor_speed_regulation +
-                ", cleaning_width=" + cleaning_width +
+                "powerConsumption=" + powerConsumption +
+                ", filterType='" + filterType + '\'' +
+                ", bagType='" + bagType + '\'' +
+                ", wandType='" + wandType + '\'' +
+                ", motorSpeedRegulation=" + motorSpeedRegulation +
+                ", cleaningWidth=" + cleaningWidth +
                 '}';
     }
 }

@@ -2,60 +2,60 @@ package by.tc.task01.entity;
 
 public class Oven extends Appliance{
 
-    private int power_consumption;
-    private int weight;
-    private int capacity;
-    private int depth;
-    private float height;
-    private float width;
+    private double powerConsumption;
+    private double weight;
+    private double capacity;
+    private double depth;
+    private double height;
+    private double width;
 
     public Oven() { }
 
-    public int getPower_consumption() {
-        return power_consumption;
+    public double getPowerConsumption() {
+        return powerConsumption;
     }
 
-    public void setPower_consumption(int power_consumption) {
-        this.power_consumption = power_consumption;
+    public void setPowerConsumption(double powerConsumption) {
+        this.powerConsumption = powerConsumption;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getCapacity() {
+    public double getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(double capacity) {
         this.capacity = capacity;
     }
 
-    public int getDepth() {
+    public double getDepth() {
         return depth;
     }
 
-    public void setDepth(int depth) {
+    public void setDepth(double depth) {
         this.depth = depth;
     }
 
-    public float getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public float getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public void setWidth(float width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
@@ -66,22 +66,26 @@ public class Oven extends Appliance{
 
         Oven oven = (Oven) o;
 
-        if (power_consumption != oven.power_consumption) return false;
-        if (weight != oven.weight) return false;
-        if (capacity != oven.capacity) return false;
-        if (depth != oven.depth) return false;
-        if (height != oven.height) return false;
-        return width == oven.width;
+        if (Double.compare(oven.powerConsumption, powerConsumption) != 0) return false;
+        if (Double.compare(oven.weight, weight) != 0) return false;
+        if (Double.compare(oven.capacity, capacity) != 0) return false;
+        if (Double.compare(oven.depth, depth) != 0) return false;
+        if (Double.compare(oven.height, height) != 0) return false;
+        return Double.compare(oven.width, width) == 0;
     }
 
     @Override
     public int hashCode() {
         int result;
         long temp;
-        result = power_consumption;
-        result = 31 * result + weight;
-        result = 31 * result + capacity;
-        result = 31 * result + depth;
+        temp = Double.doubleToLongBits(powerConsumption);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(capacity);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(depth);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(height);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(width);
@@ -92,7 +96,7 @@ public class Oven extends Appliance{
     @Override
     public String toString() {
         return "Oven{" +
-                "power_consumption=" + power_consumption +
+                "powerConsumption=" + powerConsumption +
                 ", weight=" + weight +
                 ", capacity=" + capacity +
                 ", depth=" + depth +

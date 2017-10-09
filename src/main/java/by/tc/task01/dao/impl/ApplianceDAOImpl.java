@@ -217,17 +217,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             String parameter = parsedDescription[0];
             String value = parsedDescription[1];
             if (parameter.equalsIgnoreCase("BATTERY_CAPACITY")) {
-                laptop.setBattery_capacity(Float.valueOf(value));
+                laptop.setBatteryCapacity(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("CPU")) {
-                laptop.setCpu(Float.valueOf(value));
+                laptop.setCpu(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("DISPLAY_INCHS")) {
-                laptop.setDisplay_inchs(Integer.valueOf(value));
+                laptop.setDisplayInchs(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("MEMORY_ROM")) {
-                laptop.setMemory_rom(Integer.valueOf(value));
+                laptop.setMemoryRom(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("OS")) {
                 laptop.setOs(value);
             } else if (parameter.equalsIgnoreCase("SYSTEM_MEMORY")) {
-                laptop.setSystem_memory(Integer.valueOf(value));
+                laptop.setSystemMemory(Double.valueOf(value));
             }
         }
         return laptop;
@@ -241,17 +241,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             String parameter = parsedForResponse[0];
             String value = parsedForResponse[1];
             if (parameter.equalsIgnoreCase("POWER_CONSUMPTION")) {
-                oven.setPower_consumption(Integer.valueOf(value));
+                oven.setPowerConsumption(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("WEIGHT")) {
-                oven.setWeight(Integer.valueOf(value));
+                oven.setWeight(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("CAPACITY")) {
-                oven.setCapacity(Integer.valueOf(value));
+                oven.setCapacity(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("DEPTH")) {
-                oven.setDepth(Integer.valueOf(value));
+                oven.setDepth(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("HEIGHT")) {
-                oven.setHeight(Float.valueOf(value));
+                oven.setHeight(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("WIDTH")) {
-                oven.setWidth(Float.valueOf(value));
+                oven.setWidth(Double.valueOf(value));
             }
         }
         return oven;
@@ -264,17 +264,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             String parameter = parsedForResponse[0];
             String value = parsedForResponse[1];
             if (parameter.equalsIgnoreCase("POWER_CONSUMPTION")) {
-                refrigerator.setPower_consumption(Integer.valueOf(value));
+                refrigerator.setPowerConsumption(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("WEIGHT")) {
-                refrigerator.setWeight(Integer.valueOf(value));
+                refrigerator.setWeight(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("FREEZER_CAPACITY")) {
-                refrigerator.setFreezer_capacity(Integer.valueOf(value));
+                refrigerator.setFreezerCapacity(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("OVERALL_CAPACITY")) {
-                refrigerator.setOverall_capacity(Integer.valueOf(value));
+                refrigerator.setOverallCapacity(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("HEIGHT")) {
-                refrigerator.setHeight(Integer.valueOf(value));
+                refrigerator.setHeight(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("WIDTH")) {
-                refrigerator.setWidth(Integer.valueOf(value));
+                refrigerator.setWidth(Double.valueOf(value));
             }
         }
         return refrigerator;
@@ -287,11 +287,11 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             String parameter = parsedDescription[0];
             String value = parsedDescription[1];
             if (parameter.equalsIgnoreCase("POWER_CONSUMPTION")) {
-                speakers.setPower_consumption(Integer.valueOf(value));
+                speakers.setPowerConsumption(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("NUMBER_OF_SPEAKERS")) {
-                speakers.setNumber_of_speakers(Short.valueOf(value));
+                speakers.setNumberOfSpeakers(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("CORD_LENGTH")) {
-                speakers.setCord_lenght(Short.valueOf(value));
+                speakers.setCordLenght(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("FREQUENCY_RANGE")) {
                 speakers.setFrequency(value);
             }
@@ -306,13 +306,13 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             String parameter = parsedDescription[0];
             String value = parsedDescription[1];
             if (parameter.equalsIgnoreCase("BATTERY_CAPACITY")) {
-                tabletPC.setBattery_capacity(Short.valueOf(value));
+                tabletPC.setBatteryCapacity(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("DISPLAY_INCHES")) {
-                tabletPC.setDisplay_inches(Integer.valueOf(value));
+                tabletPC.setDisplayInches(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("MEMORY_ROM")) {
-                tabletPC.setMemory_rom(Integer.valueOf(value));
+                tabletPC.setMemoryRom(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("FLASH_MEMORY_CAPACITY")) {
-                tabletPC.setFlash_memory_capacity(Short.valueOf(value));
+                tabletPC.setFlashMemoryCapacity(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("COLOR")) {
                 tabletPC.setColor(value);
             }
@@ -327,17 +327,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
             String parameter = parsedDescription[0];
             String value = parsedDescription[1];
             if (parameter.equalsIgnoreCase("POWER_CONSUMPTION")) {
-                vacuumCleaner.setPower_consumption(Integer.valueOf(value));
+                vacuumCleaner.setPowerConsumption(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("MOTOR_SPEED_REGULATION")) {
-                vacuumCleaner.setMotor_speed_regulation(Integer.valueOf(value));
+                vacuumCleaner.setMotorSpeedRegulation(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("CLEANING_WIDTH")) {
-                vacuumCleaner.setCleaning_width(Integer.valueOf(value));
+                vacuumCleaner.setCleaningWidth(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase("FILTER_TYPE")) {
-                vacuumCleaner.setFilter_type(value);
+                vacuumCleaner.setFilterType(value);
             } else if (parameter.equalsIgnoreCase("BAG_TYPE")) {
-                vacuumCleaner.setBag_type(value);
+                vacuumCleaner.setBagType(value);
             } else if (parameter.equalsIgnoreCase("WAND_TYPE")) {
-                vacuumCleaner.setWand_type(value);
+                vacuumCleaner.setWandType(value);
             }
         }
         return vacuumCleaner;

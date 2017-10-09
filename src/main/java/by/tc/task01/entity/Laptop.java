@@ -2,21 +2,21 @@ package by.tc.task01.entity;
 
 public class Laptop extends Appliance{
 
-    private float battery_capacity;
+    private double batteryCapacity;
     private String os;
-    private int memory_rom;
-    private int system_memory;
-    private float cpu;
-    private int display_inchs;
+    private double memoryRom;
+    private double systemMemory;
+    private double cpu;
+    private double displayInchs;
 
     public Laptop() {  }
 
-    public float getBattery_capacity() {
-        return battery_capacity;
+    public double getBatteryCapacity() {
+        return batteryCapacity;
     }
 
-    public void setBattery_capacity(float battery_capacity) {
-        this.battery_capacity = battery_capacity;
+    public void setBatteryCapacity(double batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
     }
 
     public String getOs() {
@@ -27,36 +27,36 @@ public class Laptop extends Appliance{
         this.os = os;
     }
 
-    public int getMemory_rom() {
-        return memory_rom;
+    public double getMemoryRom() {
+        return memoryRom;
     }
 
-    public void setMemory_rom(int memory_rom) {
-        this.memory_rom = memory_rom;
+    public void setMemoryRom(double memoryRom) {
+        this.memoryRom = memoryRom;
     }
 
-    public int getSystem_memory() {
-        return system_memory;
+    public double getSystemMemory() {
+        return systemMemory;
     }
 
-    public void setSystem_memory(int system_memory) {
-        this.system_memory = system_memory;
+    public void setSystemMemory(double systemMemory) {
+        this.systemMemory = systemMemory;
     }
 
-    public float getCpu() {
+    public double getCpu() {
         return cpu;
     }
 
-    public void setCpu(float cpu) {
+    public void setCpu(double cpu) {
         this.cpu = cpu;
     }
 
-    public int getDisplay_inchs() {
-        return display_inchs;
+    public double getDisplayInchs() {
+        return displayInchs;
     }
 
-    public void setDisplay_inchs(int display_inchs) {
-        this.display_inchs = display_inchs;
+    public void setDisplayInchs(double displayInchs) {
+        this.displayInchs = displayInchs;
     }
 
     @Override
@@ -66,34 +66,41 @@ public class Laptop extends Appliance{
 
         Laptop laptop = (Laptop) o;
 
-        if (Float.compare(laptop.battery_capacity, battery_capacity) != 0) return false;
-        if (memory_rom != laptop.memory_rom) return false;
-        if (system_memory != laptop.system_memory) return false;
-        if (Float.compare(laptop.cpu, cpu) != 0) return false;
-        if (display_inchs != laptop.display_inchs) return false;
+        if (Double.compare(laptop.batteryCapacity, batteryCapacity) != 0) return false;
+        if (Double.compare(laptop.memoryRom, memoryRom) != 0) return false;
+        if (Double.compare(laptop.systemMemory, systemMemory) != 0) return false;
+        if (Double.compare(laptop.cpu, cpu) != 0) return false;
+        if (Double.compare(laptop.displayInchs, displayInchs) != 0) return false;
         return os != null ? os.equals(laptop.os) : laptop.os == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (battery_capacity != +0.0f ? Float.floatToIntBits(battery_capacity) : 0);
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(batteryCapacity);
+        result = (int) (temp ^ (temp >>> 32));
         result = 31 * result + (os != null ? os.hashCode() : 0);
-        result = 31 * result + memory_rom;
-        result = 31 * result + system_memory;
-        result = 31 * result + (cpu != +0.0f ? Float.floatToIntBits(cpu) : 0);
-        result = 31 * result + display_inchs;
+        temp = Double.doubleToLongBits(memoryRom);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(systemMemory);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(cpu);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(displayInchs);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
         return "Laptop{" +
-                "battery_capacity=" + battery_capacity +
-                ", os='" + os +'\''+
-                ", memory_rom=" + memory_rom +
-                ", system_memory=" + system_memory +
+                "batteryCapacity=" + batteryCapacity +
+                ", os='" + os + '\'' +
+                ", memoryRom=" + memoryRom +
+                ", systemMemory=" + systemMemory +
                 ", cpu=" + cpu +
-                ", display_inchs=" + display_inchs +
+                ", displayInchs=" + displayInchs +
                 '}';
     }
 }

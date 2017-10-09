@@ -2,60 +2,60 @@ package by.tc.task01.entity;
 
 public class Refrigerator extends Appliance{
 
-    private int power_consumption;
-    private int weight;
-    private int freezer_capacity;
-    private int overall_capacity;
-    private int height;
-    private int width;
+    private double powerConsumption;
+    private double weight;
+    private double freezerCapacity;
+    private double overallCapacity;
+    private double height;
+    private double width;
 
     public Refrigerator() {  }
 
-    public int getPower_consumption() {
-        return power_consumption;
+    public double getPowerConsumption() {
+        return powerConsumption;
     }
 
-    public void setPower_consumption(int power_consumption) {
-        this.power_consumption = power_consumption;
+    public void setPowerConsumption(double powerConsumption) {
+        this.powerConsumption = powerConsumption;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getFreezer_capacity() {
-        return freezer_capacity;
+    public double getFreezerCapacity() {
+        return freezerCapacity;
     }
 
-    public void setFreezer_capacity(int freezer_capacity) {
-        this.freezer_capacity = freezer_capacity;
+    public void setFreezerCapacity(double freezerCapacity) {
+        this.freezerCapacity = freezerCapacity;
     }
 
-    public int getOverall_capacity() {
-        return overall_capacity;
+    public double getOverallCapacity() {
+        return overallCapacity;
     }
 
-    public void setOverall_capacity(int overall_capacity) {
-        this.overall_capacity = overall_capacity;
+    public void setOverallCapacity(double overallCapacity) {
+        this.overallCapacity = overallCapacity;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
@@ -66,32 +66,40 @@ public class Refrigerator extends Appliance{
 
         Refrigerator that = (Refrigerator) o;
 
-        if (power_consumption != that.power_consumption) return false;
-        if (weight != that.weight) return false;
-        if (freezer_capacity != that.freezer_capacity) return false;
-        if (overall_capacity != that.overall_capacity) return false;
-        if (height != that.height) return false;
-        return width == that.width;
+        if (Double.compare(that.powerConsumption, powerConsumption) != 0) return false;
+        if (Double.compare(that.weight, weight) != 0) return false;
+        if (Double.compare(that.freezerCapacity, freezerCapacity) != 0) return false;
+        if (Double.compare(that.overallCapacity, overallCapacity) != 0) return false;
+        if (Double.compare(that.height, height) != 0) return false;
+        return Double.compare(that.width, width) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = power_consumption;
-        result = 31 * result + weight;
-        result = 31 * result + freezer_capacity;
-        result = 31 * result + overall_capacity;
-        result = 31 * result + height;
-        result = 31 * result + width;
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(powerConsumption);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(freezerCapacity);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(overallCapacity);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(height);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(width);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
         return "Refrigerator{" +
-                "power_consumption=" + power_consumption +
+                "powerConsumption=" + powerConsumption +
                 ", weight=" + weight +
-                ", freezer_capacity=" + freezer_capacity +
-                ", overall_capacity=" + overall_capacity +
+                ", freezerCapacity=" + freezerCapacity +
+                ", overallCapacity=" + overallCapacity +
                 ", height=" + height +
                 ", width=" + width +
                 '}';
