@@ -21,6 +21,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                 Object value = firstParameter.getValue();
 
                 String[] parsedApplianceDescription;
+
                 if (searchCriteria instanceof SearchCriteria.Laptop) {
                     for (String catalogueLine : catalogue) {
                         parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Laptop");
@@ -46,6 +47,8 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                             }
                         }
                     }
+
+
                 } else if (searchCriteria instanceof SearchCriteria.Oven) {
                     for (String catalogueLine : catalogue) {
                         parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Oven");
@@ -72,6 +75,8 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                             }
                         }
                     }
+
+
                 } else if (searchCriteria instanceof SearchCriteria.Refrigerator) {
                     for (String catalogueLine : catalogue) {
                         parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Refrigerator");
@@ -98,6 +103,8 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                             }
                         }
                     }
+
+
                 } else if (searchCriteria instanceof SearchCriteria.TabletPC) {
                     for (String catalogueLine : catalogue) {
                         parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "TabletPC");
@@ -123,6 +130,8 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                             }
                         }
                     }
+
+
                 } else if (searchCriteria instanceof SearchCriteria.Speakers) {
                     for (String catalogueLine : catalogue) {
                         parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "Speakers");
@@ -148,14 +157,40 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                             }
                         }
                     }
-                } else if (searchCriteria instanceof SearchCriteria.VacuumCleaner) {
 
+
+                } else if (searchCriteria instanceof SearchCriteria.VacuumCleaner) {
+                    for (String catalogueLine : catalogue) {
+                        parsedApplianceDescription = findApplianceWithMatchingName(catalogueLine, "VacuumCleaner");
+                        if (parsedApplianceDescription != null) {
+                            for (int i = 1; i < parsedApplianceDescription.length; i++) {
+                                String[] applianceParams = parsedApplianceDescription[i].split("=");
+                                if (isVacuumCleanerParameterMatching(searchCriteria, applianceParams, value)) {
+                                    while (criteriaIterator.hasNext()) {
+                                        Map.Entry<E, Object> nextParameter = criteriaIterator.next();
+                                        E nextSearchCriteria = nextParameter.getKey();
+                                        Object nextValue = nextParameter.getValue();
+                                        for (int j = 1; j < parsedApplianceDescription.length; j++) {
+                                            String[] params = parsedApplianceDescription[j].split("=");
+                                            if (nextSearchCriteria == SearchCriteria.VacuumCleaner.valueOf(params[0])) {
+                                                if (!isVacuumCleanerParameterMatching(nextSearchCriteria, params, nextValue)) {
+                                                    return null;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    return extractSpeakersFomCatalogue(parsedApplianceDescription);
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
         }
         return null;
     }
+
 
     private String[] findApplianceWithMatchingName(String catalogueLine, String applianceType) {
         if (catalogueLine.contains(applianceType) || catalogueLine.contains(applianceType.toUpperCase()) ||
@@ -289,6 +324,17 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                 checkNumberValue(speakersParams[1], value));
     }
 
+    private <E> boolean isVacuumCleanerParameterMatching(E searchCriteria, String[] vacuumCleanerParams, Object value) {
+        return ((searchCriteria == SearchCriteria.VacuumCleaner.FILTER_TYPE ||
+                searchCriteria == SearchCriteria.VacuumCleaner.BAG_TYPE ||
+                searchCriteria == SearchCriteria.VacuumCleaner.WAND_TYPE) &&
+                vacuumCleanerParams[1].equalsIgnoreCase((String) value))
+                || (searchCriteria != SearchCriteria.VacuumCleaner.FILTER_TYPE &&
+                searchCriteria != SearchCriteria.VacuumCleaner.BAG_TYPE &&
+                searchCriteria != SearchCriteria.VacuumCleaner.WAND_TYPE &&
+                searchCriteria == SearchCriteria.VacuumCleaner.valueOf(vacuumCleanerParams[0]) &&
+                checkNumberValue(vacuumCleanerParams[1], value));
+    }
 }
 
 
