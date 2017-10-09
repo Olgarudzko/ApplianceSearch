@@ -28,7 +28,7 @@ public class Main {
 
 		criteriaOven = new Criteria<Oven>();
 		criteriaOven.add(Oven.HEIGHT, 45);
-		criteriaOven.add(Oven.DEPTH, 5);
+		criteriaOven.add(Oven.DEPTH, 60);
 
 		appliance = service.find(criteriaOven);
 
@@ -44,12 +44,12 @@ public class Main {
 //		appliance = service.find(criteriaTabletPC);
 //
 //		PrintApplianceInfo.print(appliance);
-
+//
 		Criteria <Laptop> criteriaLaptop = new Criteria<Laptop>();
 		criteriaLaptop.add (Laptop.BATTERY_CAPACITY, 1);
+		criteriaLaptop.add(Laptop.OS, "Windows");
 		appliance = service.find(criteriaLaptop);
 		PrintApplianceInfo.print(appliance);
-		criteriaLaptop.add(Laptop.OS, "Windows");
 
 	}
 

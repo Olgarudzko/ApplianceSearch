@@ -32,7 +32,8 @@ public class Validator {
                     searchCriteria == SearchCriteria.TabletPC.COLOR ||
                     searchCriteria == SearchCriteria.VacuumCleaner.FILTER_TYPE ||
                     searchCriteria == SearchCriteria.VacuumCleaner.BAG_TYPE ||
-                    searchCriteria == SearchCriteria.VacuumCleaner.WAND_TYPE)) {
+                    searchCriteria == SearchCriteria.VacuumCleaner.WAND_TYPE ||
+                    searchCriteria == SearchCriteria.Speakers.FREQUENCY_RANGE)) {
                 if (value instanceof String) {
                     return false;
                 }
