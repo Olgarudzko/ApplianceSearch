@@ -16,24 +16,24 @@ public class Main {
 		ApplianceService service = factory.getApplianceService();
 
 		//////////////////////////////////////////////////////////////////
-//
-//		Criteria<Oven> criteriaOven = new Criteria<Oven>();
+
+		Criteria<Oven> criteriaOven = new Criteria<Oven>();
 //		criteriaOven.add(Oven.CAPACITY, 3);
 //
 //		appliance = service.find(criteriaOven);
 //
 //		PrintApplianceInfo.print(appliance);
-//
-//		//////////////////////////////////////////////////////////////////
-//
-//		criteriaOven = new Criteria<Oven>();
-//		criteriaOven.add(Oven.HEIGHT, 200);
-//		criteriaOven.add(Oven.DEPTH, 300);
-//
-//		appliance = service.find(criteriaOven);
-//
-//		PrintApplianceInfo.print(appliance);
-//
+
+		//////////////////////////////////////////////////////////////////
+
+		criteriaOven = new Criteria<Oven>();
+		criteriaOven.add(Oven.HEIGHT, 45);
+		criteriaOven.add(Oven.DEPTH, 5);
+
+		appliance = service.find(criteriaOven);
+
+		PrintApplianceInfo.print(appliance);
+
 //		//////////////////////////////////////////////////////////////////
 //
 //		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
@@ -44,12 +44,12 @@ public class Main {
 //		appliance = service.find(criteriaTabletPC);
 //
 //		PrintApplianceInfo.print(appliance);
-//
+
 		Criteria <Laptop> criteriaLaptop = new Criteria<Laptop>();
 		criteriaLaptop.add (Laptop.BATTERY_CAPACITY, 1);
 		appliance = service.find(criteriaLaptop);
 		PrintApplianceInfo.print(appliance);
-//		criteriaLaptop.add(Laptop.OS, "Windows");
+		criteriaLaptop.add(Laptop.OS, "Windows");
 
 	}
 

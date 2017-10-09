@@ -9,11 +9,8 @@ import java.util.Map;
 public class Validator {
 
     public static <E> boolean criteriaValidator(Criteria<E> criteria) {
-
         Iterator<Map.Entry<E, Object>> criteriaIterator = criteria.getCriteria().entrySet().iterator();
-
         while (criteriaIterator.hasNext()) {
-
             Map.Entry<E, Object> parameter = criteriaIterator.next();
             E searchCriteria = parameter.getKey();
             Object value = parameter.getValue();
@@ -45,7 +42,6 @@ public class Validator {
                 }
             }
         }
-
         return true;
     }
 }
