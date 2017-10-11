@@ -1,6 +1,6 @@
 package by.tc.task01.entity;
 
-public class Refrigerator extends Appliance{
+public class Refrigerator extends Appliance {
 
     private double powerConsumption;
     private double weight;
@@ -9,7 +9,8 @@ public class Refrigerator extends Appliance{
     private double height;
     private double width;
 
-    public Refrigerator() {  }
+    public Refrigerator() {
+    }
 
     public double getPowerConsumption() {
         return powerConsumption;

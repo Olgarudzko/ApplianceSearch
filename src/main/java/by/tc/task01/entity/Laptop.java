@@ -1,6 +1,6 @@
 package by.tc.task01.entity;
 
-public class Laptop extends Appliance{
+public class Laptop extends Appliance {
 
     private double batteryCapacity;
     private String os;
@@ -9,7 +9,8 @@ public class Laptop extends Appliance{
     private double cpu;
     private double displayInchs;
 
-    public Laptop() {  }
+    public Laptop() {
+    }
 
     public double getBatteryCapacity() {
         return batteryCapacity;

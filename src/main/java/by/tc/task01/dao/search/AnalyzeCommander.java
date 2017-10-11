@@ -21,11 +21,11 @@ public class AnalyzeCommander {
         commandsMap.put(Strings.VACUUM_CLEANER, new VacuumCleanerAnalyzer());
     }
 
-    public static AnalyzeCommander getInstance(){
+    public static AnalyzeCommander getInstance() {
         return instance;
     }
 
-    public Analyzer getApplianceAnalyzer(String appliance){
+    public Analyzer getApplianceAnalyzer(String appliance) {
         return commandsMap.get(appliance);
     }
 }

@@ -57,5 +57,3 @@ public class Validator {
 
     }
 }
-
-//you may add your own new classes

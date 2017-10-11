@@ -8,8 +8,9 @@ import java.util.Map;
 
 public class CreationCommander {
 
-    private Map <String, ApplianceCreator> commandsMap;
+    private Map<String, ApplianceCreator> commandsMap;
     private static final CreationCommander instance = new CreationCommander();
+
     private CreationCommander() {
         commandsMap = new HashMap<String, ApplianceCreator>();
         commandsMap.put(Strings.LAPTOP, new LaptopCreator());
@@ -20,11 +21,11 @@ public class CreationCommander {
         commandsMap.put(Strings.VACUUM_CLEANER, new VacuumCleanerCreator());
     }
 
-    public static CreationCommander getInstance(){
+    public static CreationCommander getInstance() {
         return instance;
     }
 
-    public ApplianceCreator getApplianceCreator(String appliance){
+    public ApplianceCreator getApplianceCreator(String appliance) {
         return commandsMap.get(appliance);
     }
 }

@@ -1,6 +1,6 @@
 package by.tc.task01.entity;
 
-public class TabletPC extends Appliance{
+public class TabletPC extends Appliance {
 
     private double batteryCapacity;
     private double displayInches;
@@ -8,7 +8,8 @@ public class TabletPC extends Appliance{
     private double flashMemoryCapacity;
     private String color;
 
-    public TabletPC() { }
+    public TabletPC() {
+    }
 
     public double getBatteryCapacity() {
         return batteryCapacity;

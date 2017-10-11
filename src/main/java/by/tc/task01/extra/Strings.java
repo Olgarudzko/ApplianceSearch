@@ -2,10 +2,15 @@ package by.tc.task01.extra;
 
 public class Strings {
 
+    //Appliance catalogue name
+    public static final String CATALOGUE = "appliances_db.txt";
+
     //Regex patterns
     public static final String EQUAL = "=";
     public static final String SEPARATORS = "[ :,;]+";
+    public static final String NEW_LINE = "\n";
 
+    public static final String CHARSET_NAME = "UTF-8";
 
     public static final String LAPTOP = "Laptop";
     public static final String OVEN = "Oven";
@@ -38,5 +43,11 @@ public class Strings {
     public static final String FLASH_MEMORY_CAPACITY = "FLASH_MEMORY_CAPACITY";
     public static final String COLOR = "COLOR";
 
-    private Strings (){}
+    //Notifications
+    public static final String CATALOGUE_NOT_AVAILABLE = "Catalogue is currently not available.";
+    public static final String ERROR_READING = "Error reading catalogue.";
+    public static final String NO_MATCHING_APPLIANCE = "Unfortunately we have no matching appliance.";
+
+    private Strings() {
+    }
 }
