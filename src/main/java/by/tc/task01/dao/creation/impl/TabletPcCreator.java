@@ -14,7 +14,7 @@ public class TabletPcCreator implements ApplianceCreator {
             String value = parsedDescription[1];
             if (parameter.equalsIgnoreCase(Strings.BATTERY_CAPACITY)) {
                 tabletPC.setBatteryCapacity(Double.valueOf(value));
-            } else if (parameter.equalsIgnoreCase(Strings.DISPLAY_INCHS)) {
+            } else if (parameter.equalsIgnoreCase(Strings.DISPLAY_INCHES)) {
                 tabletPC.setDisplayInches(Double.valueOf(value));
             } else if (parameter.equalsIgnoreCase(Strings.MEMORY_ROM)) {
                 tabletPC.setMemoryRom(Double.valueOf(value));

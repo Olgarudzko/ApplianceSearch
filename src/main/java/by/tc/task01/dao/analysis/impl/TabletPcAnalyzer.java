@@ -5,38 +5,27 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 import by.tc.task01.extra.Strings;
 import by.tc.task01.service.validation.Validator;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class TabletPcAnalyzer implements Analyzer {
 
-    public <E> boolean isApplianceMatches(String[] catalogueLine, E searchCriteria, Object value,
-                                          Iterator<Map.Entry<E, Object>> criteriaIterator) {
-        if (catalogueLine == null) {
+    public <E> boolean isApplianceMatches(String[] description, Map<E, Object> request) {
+        if (description == null) {
             return false;
         }
 
-        for (int i = 1; i < catalogueLine.length; i++) {
-            String[] applianceParams = catalogueLine[i].split(Strings.EQUAL);
-            if (isTabletPCParameterMatching(searchCriteria, applianceParams, value)) {
-                while (criteriaIterator.hasNext()) {
-                    Map.Entry<E, Object> nextParameter = criteriaIterator.next();
-                    E nextSearchCriteria = nextParameter.getKey();
-                    Object nextValue = nextParameter.getValue();
-                    for (int j = 1; j < catalogueLine.length; j++) {
-                        String[] params = catalogueLine[j].split(Strings.EQUAL);
-                        if (nextSearchCriteria == SearchCriteria.TabletPC.valueOf(params[0])) {
-                            if (!isTabletPCParameterMatching(nextSearchCriteria, params, nextValue)) {
-                                return false;
-                            }
-                        }
+        for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
+            for (int j = 1; j < description.length; j++) {
+                String[] params = description[j].split(Strings.EQUAL);
+                if (SearchCriteria.TabletPC.valueOf(params[0]) == desiredParam.getKey()) {
+                    if (!isTabletPCParameterMatching(desiredParam.getKey(), params, desiredParam.getValue())) {
+                        return false;
                     }
                 }
-                return true;
             }
         }
 
-        return false;
+        return true;
     }
 
     private <E> boolean isTabletPCParameterMatching(E searchCriteria, String[] tabletPcParam, Object desiredValue) {

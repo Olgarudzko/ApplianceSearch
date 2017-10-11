@@ -21,6 +21,7 @@ public class Strings {
     public static final String BATTERY_CAPACITY = "BATTERY_CAPACITY";
     public static final String CPU = "CPU";
     public static final String DISPLAY_INCHS = "DISPLAY_INCHS";
+    public static final String DISPLAY_INCHES = "DISPLAY_INCHES";
     public static final String MEMORY_ROM = "MEMORY_ROM";
     public static final String OS = "OS";
     public static final String SYSTEM_MEMORY = "SYSTEM_MEMORY";
@@ -42,8 +43,6 @@ public class Strings {
     public static final String FREQUENCY_RANGE = "FREQUENCY_RANGE";
     public static final String FLASH_MEMORY_CAPACITY = "FLASH_MEMORY_CAPACITY";
     public static final String COLOR = "COLOR";
-
-    //Notifications
     public static final String CATALOGUE_NOT_AVAILABLE = "Catalogue is currently not available.";
     public static final String ERROR_READING = "Error reading catalogue.";
     public static final String NO_MATCHING_APPLIANCE = "Unfortunately we have no matching appliance.";
