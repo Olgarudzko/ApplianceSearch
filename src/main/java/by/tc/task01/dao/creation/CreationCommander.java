@@ -6,12 +6,12 @@ import by.tc.task01.extra.Strings;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApplianceCommander {
+public class CreationCommander {
 
-    private Map <String, Command> commandsMap;
-    private static final  ApplianceCommander instance = new ApplianceCommander();
-    private ApplianceCommander() {
-        commandsMap = new HashMap<String, Command>();
+    private Map <String, ApplianceCreator> commandsMap;
+    private static final CreationCommander instance = new CreationCommander();
+    private CreationCommander() {
+        commandsMap = new HashMap<String, ApplianceCreator>();
         commandsMap.put(Strings.LAPTOP, new LaptopCreator());
         commandsMap.put(Strings.OVEN, new OvenCreator());
         commandsMap.put(Strings.REFRIGERATOR, new RefrigeratorCreator());
@@ -20,11 +20,11 @@ public class ApplianceCommander {
         commandsMap.put(Strings.VACUUM_CLEANER, new VacuumCleanerCreator());
     }
 
-    public static ApplianceCommander getInstance(){
+    public static CreationCommander getInstance(){
         return instance;
     }
 
-    public Command getApplianceCreator(String appliance){
+    public ApplianceCreator getApplianceCreator(String appliance){
         return commandsMap.get(appliance);
     }
 }

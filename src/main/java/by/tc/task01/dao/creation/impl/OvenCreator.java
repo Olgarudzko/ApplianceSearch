@@ -1,12 +1,12 @@
 package by.tc.task01.dao.creation.impl;
 
-import by.tc.task01.dao.creation.Command;
+import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.entity.Oven;
 import by.tc.task01.extra.Strings;
 
-public class OvenCreator implements Command {
+public class OvenCreator implements ApplianceCreator {
 
-    public Oven execute(String[] parameters) {
+    public Oven create(String[] parameters) {
         Oven oven = new Oven();
         for (int j = 1; j < parameters.length; j++) {
             String[] parsedForResponse = parameters[j].trim().split(Strings.EQUAL);

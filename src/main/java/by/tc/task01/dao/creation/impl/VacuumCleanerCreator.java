@@ -1,12 +1,12 @@
 package by.tc.task01.dao.creation.impl;
 
-import by.tc.task01.dao.creation.Command;
+import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.entity.VacuumCleaner;
 import by.tc.task01.extra.Strings;
 
-public class VacuumCleanerCreator implements Command{
+public class VacuumCleanerCreator implements ApplianceCreator {
 
-    public VacuumCleaner execute(String[] parameters) {
+    public VacuumCleaner create(String[] parameters) {
         VacuumCleaner vacuumCleaner = new VacuumCleaner();
         for (int j = 1; j < parameters.length; j++) {
             String[] parsedDescription = parameters[j].trim().split(Strings.EQUAL);

@@ -1,12 +1,12 @@
 package by.tc.task01.dao.creation.impl;
 
-import by.tc.task01.dao.creation.Command;
+import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.entity.Refrigerator;
 import by.tc.task01.extra.Strings;
 
-public class RefrigeratorCreator implements Command{
+public class RefrigeratorCreator implements ApplianceCreator {
 
-    public Refrigerator execute(String[] parameters) {
+    public Refrigerator create(String[] parameters) {
         Refrigerator refrigerator = new Refrigerator();
         for (int j = 1; j < parameters.length; j++) {
             String[] parsedForResponse = parameters[j].trim().split(Strings.EQUAL);

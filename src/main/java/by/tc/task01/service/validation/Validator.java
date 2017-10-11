@@ -45,6 +45,17 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean checkNumberValue(String apllianceValue, Object desiredValue) {
+        return Double.valueOf(apllianceValue).equals(
+                (desiredValue instanceof Integer) ? Double.valueOf((Integer) desiredValue) :
+                        (desiredValue instanceof Double) ? (Double) desiredValue :
+                                (desiredValue instanceof Float) ? Double.valueOf((Float) desiredValue) :
+                                        (desiredValue instanceof Short) ? Double.valueOf((Short) desiredValue) :
+                                                (desiredValue instanceof Long) ? Double.valueOf((Long) desiredValue) :
+                                                        Double.valueOf((Byte) desiredValue));
+
+    }
 }
 
 //you may add your own new classes

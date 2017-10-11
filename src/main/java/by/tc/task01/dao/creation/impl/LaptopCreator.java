@@ -1,12 +1,12 @@
 package by.tc.task01.dao.creation.impl;
 
-import by.tc.task01.dao.creation.Command;
+import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.entity.Laptop;
 import by.tc.task01.extra.Strings;
 
-public class LaptopCreator implements Command{
+public class LaptopCreator implements ApplianceCreator {
 
-    public Laptop execute(String[] parameters) {
+    public Laptop create(String[] parameters) {
         Laptop laptop = new Laptop();
         for (int j = 1; j < parameters.length; j++) {
             String[] parsedDescription = parameters[j].trim().split(Strings.EQUAL);

@@ -59,6 +59,11 @@ public class Main {
 		appliance = service.find(criteriaVacuumCleaner);
 		PrintApplianceInfo.print(appliance);
 
+		Criteria<Refrigerator> criteriaRefrigerator = new Criteria<Refrigerator>();
+		criteriaRefrigerator.add(Refrigerator.FREEZER_CAPACITY, 15);
+		criteriaRefrigerator.add(Refrigerator.POWER_CONSUMPTION, 200);
+		appliance = service.find(criteriaRefrigerator);
+		PrintApplianceInfo.print(appliance);
 	}
 
 }

@@ -1,12 +1,12 @@
 package by.tc.task01.dao.creation.impl;
 
-import by.tc.task01.dao.creation.Command;
+import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.entity.Speakers;
 import by.tc.task01.extra.Strings;
 
-public class SpeakersCreator implements Command{
+public class SpeakersCreator implements ApplianceCreator {
 
-    public Speakers execute(String[] parameters) {
+    public Speakers create(String[] parameters) {
         Speakers speakers = new Speakers();
         for (int j = 1; j < parameters.length; j++) {
             String[] parsedDescription = parameters[j].trim().split(Strings.EQUAL);

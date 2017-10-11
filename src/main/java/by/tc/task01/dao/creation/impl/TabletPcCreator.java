@@ -1,12 +1,12 @@
 package by.tc.task01.dao.creation.impl;
 
-import by.tc.task01.dao.creation.Command;
+import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.entity.TabletPC;
 import by.tc.task01.extra.Strings;
 
-public class TabletPcCreator implements Command{
+public class TabletPcCreator implements ApplianceCreator {
 
-    public TabletPC execute(String[] parameters) {
+    public TabletPC create(String[] parameters) {
         TabletPC tabletPC = new TabletPC();
         for (int j = 1; j < parameters.length; j++) {
             String[] parsedDescription = parameters[j].trim().split(Strings.EQUAL);
