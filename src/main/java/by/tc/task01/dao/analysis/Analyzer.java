@@ -1,4 +1,4 @@
-package by.tc.task01.dao.search;
+package by.tc.task01.dao.analysis;
 
 import java.util.Iterator;
 import java.util.Map;

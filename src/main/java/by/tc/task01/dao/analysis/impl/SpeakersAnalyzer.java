@@ -1,6 +1,6 @@
-package by.tc.task01.dao.search.impl;
+package by.tc.task01.dao.analysis.impl;
 
-import by.tc.task01.dao.search.Analyzer;
+import by.tc.task01.dao.analysis.Analyzer;
 import by.tc.task01.entity.criteria.SearchCriteria;
 import by.tc.task01.extra.Strings;
 import by.tc.task01.service.validation.Validator;

@@ -3,8 +3,8 @@ package by.tc.task01.dao.impl;
 import by.tc.task01.dao.ApplianceDAO;
 import by.tc.task01.dao.creation.ApplianceCreator;
 import by.tc.task01.dao.creation.CreationCommander;
-import by.tc.task01.dao.search.AnalyzeCommander;
-import by.tc.task01.dao.search.Analyzer;
+import by.tc.task01.dao.analysis.AnalysisCommander;
+import by.tc.task01.dao.analysis.Analyzer;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.extra.Strings;
@@ -24,7 +24,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
                 E searchCriteria = firstParameter.getKey();
                 Object value = firstParameter.getValue();
 
-                Analyzer analyzer = AnalyzeCommander.getInstance().getApplianceAnalyzer(criteria.getApplianceType());
+                Analyzer analyzer = AnalysisCommander.getInstance().getApplianceAnalyzer(criteria.getApplianceType());
                 ApplianceCreator creator = CreationCommander.getInstance().getApplianceCreator(criteria.getApplianceType());
                 for (String catalogueLine : catalogue) {
                     String[] parsedDescription = findApplianceWithMatchingName(catalogueLine, criteria.getApplianceType());

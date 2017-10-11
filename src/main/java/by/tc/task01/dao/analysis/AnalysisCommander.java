@@ -1,17 +1,17 @@
-package by.tc.task01.dao.search;
+package by.tc.task01.dao.analysis;
 
-import by.tc.task01.dao.search.impl.*;
+import by.tc.task01.dao.analysis.impl.*;
 import by.tc.task01.extra.Strings;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnalyzeCommander {
+public class AnalysisCommander {
 
     private Map<String, Analyzer> commandsMap;
-    private static final AnalyzeCommander instance = new AnalyzeCommander();
+    private static final AnalysisCommander instance = new AnalysisCommander();
 
-    private AnalyzeCommander() {
+    private AnalysisCommander() {
         commandsMap = new HashMap<String, Analyzer>();
         commandsMap.put(Strings.LAPTOP, new LaptopAnalyzer());
         commandsMap.put(Strings.OVEN, new OvenAnalyzer());
@@ -21,7 +21,7 @@ public class AnalyzeCommander {
         commandsMap.put(Strings.VACUUM_CLEANER, new VacuumCleanerAnalyzer());
     }
 
-    public static AnalyzeCommander getInstance() {
+    public static AnalysisCommander getInstance() {
         return instance;
     }
 
