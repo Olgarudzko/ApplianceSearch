@@ -1,7 +1,7 @@
 package by.tc.task01.dao.creation;
 
 import by.tc.task01.dao.creation.impl.*;
-import by.tc.task01.extra.Strings;
+import by.tc.task01.entity.criteria.SearchCriteria;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,12 +13,12 @@ public class CreationCommander {
 
     private CreationCommander() {
         commandsMap = new HashMap<String, ApplianceCreator>();
-        commandsMap.put(Strings.LAPTOP, new LaptopCreator());
-        commandsMap.put(Strings.OVEN, new OvenCreator());
-        commandsMap.put(Strings.REFRIGERATOR, new RefrigeratorCreator());
-        commandsMap.put(Strings.TABLET_PC, new TabletPcCreator());
-        commandsMap.put(Strings.SPEAKERS, new SpeakersCreator());
-        commandsMap.put(Strings.VACUUM_CLEANER, new VacuumCleanerCreator());
+        commandsMap.put(SearchCriteria.Laptop.class.getSimpleName(), new LaptopCreator());
+        commandsMap.put(SearchCriteria.Oven.class.getSimpleName(), new OvenCreator());
+        commandsMap.put(SearchCriteria.Refrigerator.class.getSimpleName(), new RefrigeratorCreator());
+        commandsMap.put(SearchCriteria.TabletPC.class.getSimpleName(), new TabletPcCreator());
+        commandsMap.put(SearchCriteria.Speakers.class.getSimpleName(), new SpeakersCreator());
+        commandsMap.put(SearchCriteria.VacuumCleaner.class.getSimpleName(), new VacuumCleanerCreator());
     }
 
     public static CreationCommander getInstance() {

@@ -3,16 +3,20 @@ package by.tc.task01.service.validation;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.entity.criteria.SearchCriteria;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class Validator {
 
     public static <E> boolean criteriaValidator(Criteria<E> criteria) {
-        Iterator<Map.Entry<E, Object>> criteriaIterator = criteria.getCriteria().entrySet().iterator();
-        while (criteriaIterator.hasNext()) {
-            Map.Entry<E, Object> parameter = criteriaIterator.next();
-            E searchCriteria = parameter.getKey();
+
+        if (criteria.getCriteria().isEmpty()) {
+            return false;
+        }
+
+        E searchCriteria = null;
+
+        for (Map.Entry<E, Object> parameter : criteria.getCriteria().entrySet()) {
+            searchCriteria = parameter.getKey();
             Object value = parameter.getValue();
 
             if (!(searchCriteria instanceof SearchCriteria.Laptop ||
@@ -43,6 +47,12 @@ public class Validator {
                 }
             }
         }
+
+        if (searchCriteria == null) {
+            return false;
+        }
+
+        criteria.setApplianceType(searchCriteria.getClass().getSimpleName());
         return true;
     }
 

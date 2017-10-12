@@ -12,12 +12,6 @@ public class Strings {
 
     public static final String CHARSET_NAME = "UTF-8";
 
-    public static final String LAPTOP = "Laptop";
-    public static final String OVEN = "Oven";
-    public static final String REFRIGERATOR = "Refrigerator";
-    public static final String TABLET_PC = "TabletPC";
-    public static final String SPEAKERS = "Speakers";
-    public static final String VACUUM_CLEANER = "VacuumCleaner";
     public static final String BATTERY_CAPACITY = "BATTERY_CAPACITY";
     public static final String CPU = "CPU";
     public static final String DISPLAY_INCHS = "DISPLAY_INCHS";
