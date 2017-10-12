@@ -29,7 +29,7 @@ public class ApplianceServiceImpl implements ApplianceService {
 
     public static String[] readCurrentCatalogue(Class context) {
         String[] catalogue;
-        FileInputStream catalogueReader;
+        FileInputStream catalogueReader = null;
         try {
             URL source = context.getClassLoader().getResource(Strings.CATALOGUE);
             if (source == null) {
@@ -47,6 +47,14 @@ public class ApplianceServiceImpl implements ApplianceService {
         } catch (IOException e) {
             System.out.println(Strings.ERROR_READING);
             return null;
+        } finally {
+            if (catalogueReader != null) {
+                try {
+                    catalogueReader.close();
+                } catch (IOException e) {
+                    System.out.println(Strings.ERROR_STREAM_CLOSING + e.getLocalizedMessage());
+                }
+            }
         }
         return catalogue;
     }
