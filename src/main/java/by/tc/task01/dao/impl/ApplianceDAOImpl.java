@@ -8,12 +8,13 @@ import by.tc.task01.dao.creation.CreationCommander;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.extra.Strings;
+import by.tc.task01.service.impl.ApplianceServiceImpl;
 
 public class ApplianceDAOImpl implements ApplianceDAO {
 
     public <E> Appliance find(Criteria<E> criteria) {
 
-        String[] catalogue = Appliance.readCurrentCatalogue(getClass());
+        String[] catalogue = ApplianceServiceImpl.readCurrentCatalogue(getClass());
 
         if (catalogue == null) {
             return null;
