@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class CreationCommander {
 
-    private Map<String, ApplianceCreator> commandsMap;
+    private final Map<String, ApplianceCreator> commandsMap;
     private static final CreationCommander instance = new CreationCommander();
 
     private CreationCommander() {

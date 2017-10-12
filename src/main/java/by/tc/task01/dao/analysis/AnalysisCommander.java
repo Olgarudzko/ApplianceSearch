@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class AnalysisCommander {
 
-    private Map<String, Analyzer> commandsMap;
+    private final Map<String, Analyzer> commandsMap;
     private static final AnalysisCommander instance = new AnalysisCommander();
 
     private AnalysisCommander() {

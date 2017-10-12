@@ -48,10 +48,6 @@ public class Validator {
             }
         }
 
-        if (searchCriteria == null) {
-            return false;
-        }
-
         criteria.setApplianceType(searchCriteria.getClass().getSimpleName());
         return true;
     }
