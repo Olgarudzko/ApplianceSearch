@@ -17,11 +17,15 @@ public class SpeakersAnalyzer implements Analyzer {
 
         for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
             for (int j = 1; j < description.length; j++) {
-                String[] params = description[j].split(Strings.EQUAL);
-                if (SearchCriteria.Speakers.valueOf(params[0]) == desiredParam.getKey()) {
-                    if (!isSpeakersParameterMatching(desiredParam.getKey(), params, desiredParam.getValue())) {
-                        return false;
+                String[] speakersParam = description[j].split(Strings.EQUAL);
+                try {
+                    if (SearchCriteria.Speakers.valueOf(speakersParam[0]) == desiredParam.getKey()) {
+                        if (!isSpeakersParameterMatching(desiredParam.getKey(), speakersParam, desiredParam.getValue())) {
+                            return false;
+                        }
                     }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(Strings.UNKNOWN_PARAMETER + speakersParam[0]);
                 }
             }
         }
@@ -34,6 +38,6 @@ public class SpeakersAnalyzer implements Analyzer {
                 speakersParams[1].equalsIgnoreCase((String) value))
                 || (searchCriteria != SearchCriteria.Speakers.FREQUENCY_RANGE &&
                 searchCriteria == SearchCriteria.Speakers.valueOf(speakersParams[0]) &&
-                Validator.checkNumberValue(speakersParams[1], value));
+                Validator.compareNumericValues(speakersParams[1], value));
     }
 }

@@ -18,10 +18,14 @@ public class LaptopAnalyzer implements Analyzer {
         for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
             for (int j = 1; j < description.length; j++) {
                 String[] laptopParam = description[j].split(Strings.EQUAL);
-                if (SearchCriteria.Laptop.valueOf(laptopParam[0]) == desiredParam.getKey()) {
-                    if (!isLaptopParameterMatching(desiredParam.getKey(), laptopParam, desiredParam.getValue())) {
-                        return false;
+                try {
+                    if (SearchCriteria.Laptop.valueOf(laptopParam[0]) == desiredParam.getKey()) {
+                        if (!isLaptopParameterMatching(desiredParam.getKey(), laptopParam, desiredParam.getValue())) {
+                            return false;
+                        }
                     }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(Strings.UNKNOWN_PARAMETER + laptopParam[0]);
                 }
             }
         }
@@ -34,6 +38,6 @@ public class LaptopAnalyzer implements Analyzer {
                 laptopParam[1].equalsIgnoreCase((String) desiredValue))
                 || (searchCriteria != SearchCriteria.Laptop.OS &&
                 searchCriteria == SearchCriteria.Laptop.valueOf(laptopParam[0]) &&
-                Validator.checkNumberValue(laptopParam[1], desiredValue));
+                Validator.compareNumericValues(laptopParam[1], desiredValue));
     }
 }

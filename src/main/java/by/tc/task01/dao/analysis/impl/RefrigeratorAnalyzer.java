@@ -17,11 +17,15 @@ public class RefrigeratorAnalyzer implements Analyzer {
 
         for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
             for (int j = 1; j < description.length; j++) {
-                String[] params = description[j].split(Strings.EQUAL);
-                if (SearchCriteria.Refrigerator.valueOf(params[0]) == desiredParam.getKey()) {
-                    if (!Validator.checkNumberValue(params[1], desiredParam.getValue())) {
-                        return false;
+                String[] fridgeParam = description[j].split(Strings.EQUAL);
+                try {
+                    if (SearchCriteria.Refrigerator.valueOf(fridgeParam[0]) == desiredParam.getKey()) {
+                        if (!Validator.compareNumericValues(fridgeParam[1], desiredParam.getValue())) {
+                            return false;
+                        }
                     }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(Strings.UNKNOWN_PARAMETER + fridgeParam[0]);
                 }
             }
         }

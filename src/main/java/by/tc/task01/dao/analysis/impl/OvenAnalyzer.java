@@ -17,11 +17,15 @@ public class OvenAnalyzer implements Analyzer {
 
         for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
             for (int j = 1; j < description.length; j++) {
-                String[] params = description[j].split(Strings.EQUAL);
-                if (SearchCriteria.Oven.valueOf(params[0]) == desiredParam.getKey()) {
-                    if (!Validator.checkNumberValue(params[1], desiredParam.getValue())) {
-                        return false;
+                String[] ovenParam = description[j].split(Strings.EQUAL);
+                try {
+                    if (SearchCriteria.Oven.valueOf(ovenParam[0]) == desiredParam.getKey()) {
+                        if (!Validator.compareNumericValues(ovenParam[1], desiredParam.getValue())) {
+                            return false;
+                        }
                     }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(Strings.UNKNOWN_PARAMETER + ovenParam[0]);
                 }
             }
         }

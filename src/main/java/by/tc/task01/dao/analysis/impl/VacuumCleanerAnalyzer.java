@@ -8,6 +8,7 @@ import by.tc.task01.service.validation.Validator;
 import java.util.Map;
 
 public class VacuumCleanerAnalyzer implements Analyzer {
+
     public <E> boolean isApplianceMatches(String[] description, Map<E, Object> request) {
 
         if (description == null) {
@@ -16,11 +17,15 @@ public class VacuumCleanerAnalyzer implements Analyzer {
 
         for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
             for (int j = 1; j < description.length; j++) {
-                String[] params = description[j].split(Strings.EQUAL);
-                if (SearchCriteria.VacuumCleaner.valueOf(params[0]) == desiredParam.getKey()) {
-                    if (!isVacuumCleanerParameterMatching(desiredParam.getKey(), params, desiredParam.getValue())) {
-                        return false;
+                String[] vacuumCleanerParam = description[j].split(Strings.EQUAL);
+                try {
+                    if (SearchCriteria.VacuumCleaner.valueOf(vacuumCleanerParam[0]) == desiredParam.getKey()) {
+                        if (!isVacuumCleanerParameterMatching(desiredParam.getKey(), vacuumCleanerParam, desiredParam.getValue())) {
+                            return false;
+                        }
                     }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(Strings.UNKNOWN_PARAMETER + vacuumCleanerParam[0]);
                 }
             }
         }
@@ -37,6 +42,6 @@ public class VacuumCleanerAnalyzer implements Analyzer {
                 searchCriteria != SearchCriteria.VacuumCleaner.BAG_TYPE &&
                 searchCriteria != SearchCriteria.VacuumCleaner.WAND_TYPE &&
                 searchCriteria == SearchCriteria.VacuumCleaner.valueOf(vacuumCleanerParams[0]) &&
-                Validator.checkNumberValue(vacuumCleanerParams[1], value));
+                Validator.compareNumericValues(vacuumCleanerParams[1], value));
     }
 }

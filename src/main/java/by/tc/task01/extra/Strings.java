@@ -40,6 +40,7 @@ public class Strings {
     public static final String CATALOGUE_NOT_AVAILABLE = "Catalogue is currently not available.";
     public static final String ERROR_READING = "Error reading catalogue.";
     public static final String NO_MATCHING_APPLIANCE = "Unfortunately we have no matching appliance.";
+    public static final String UNKNOWN_PARAMETER = "Unknown parameter was found in catalogue: ";
 
     private Strings() {
     }

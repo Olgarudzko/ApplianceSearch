@@ -52,7 +52,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkNumberValue(String apllianceValue, Object desiredValue) {
+    public static boolean compareNumericValues(String apllianceValue, Object desiredValue) {
         return Double.valueOf(apllianceValue).equals(
                 (desiredValue instanceof Integer) ? Double.valueOf((Integer) desiredValue) :
                         (desiredValue instanceof Double) ? (Double) desiredValue :

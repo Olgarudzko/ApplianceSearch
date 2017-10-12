@@ -16,11 +16,15 @@ public class TabletPcAnalyzer implements Analyzer {
 
         for (Map.Entry<E, Object> desiredParam : request.entrySet()) {
             for (int j = 1; j < description.length; j++) {
-                String[] params = description[j].split(Strings.EQUAL);
-                if (SearchCriteria.TabletPC.valueOf(params[0]) == desiredParam.getKey()) {
-                    if (!isTabletPCParameterMatching(desiredParam.getKey(), params, desiredParam.getValue())) {
-                        return false;
+                String[] tabletParam = description[j].split(Strings.EQUAL);
+                try {
+                    if (SearchCriteria.TabletPC.valueOf(tabletParam[0]) == desiredParam.getKey()) {
+                        if (!isTabletPCParameterMatching(desiredParam.getKey(), tabletParam, desiredParam.getValue())) {
+                            return false;
+                        }
                     }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(Strings.UNKNOWN_PARAMETER + tabletParam[0]);
                 }
             }
         }
@@ -33,6 +37,6 @@ public class TabletPcAnalyzer implements Analyzer {
                 tabletPcParam[1].equalsIgnoreCase((String) desiredValue))
                 || (searchCriteria != SearchCriteria.TabletPC.COLOR &&
                 searchCriteria == SearchCriteria.TabletPC.valueOf(tabletPcParam[0]) &&
-                Validator.checkNumberValue(tabletPcParam[1], desiredValue));
+                Validator.compareNumericValues(tabletPcParam[1], desiredValue));
     }
 }
